@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { Horoscope, HoroscopeContent } from './horoscope.model';
+import { mapHoroscope } from './horoscopes.utils';
 
 @Injectable()
 export class HoroscopesService {
@@ -10,8 +11,9 @@ export class HoroscopesService {
     @InjectModel('Horoscope') private readonly horoscopeModel: Model<Horoscope>,
   ) {}
 
-  getHoroscopes() {
-    return this.horoscopeModel.find();
+  async getHoroscopes() {
+    const horoscopes = await this.horoscopeModel.find();
+    return horoscopes.map(mapHoroscope);
   }
 
   async updateHoroscope(horoscopeId: string, data: HoroscopeContent) {
