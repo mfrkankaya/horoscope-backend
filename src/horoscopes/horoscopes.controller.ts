@@ -11,6 +11,11 @@ export class HoroscopesController {
     return this.horoscopesService.getHoroscopes();
   }
 
+  @Get('/:horoscopeId')
+  getSingleHoroscope(@Param('horoscopeId') horoscopeId: string) {
+    return this.horoscopesService.getSingleHoroscope(horoscopeId);
+  }
+
   @Put('/:horoscopeId')
   updateHoroscope(
     @Param('horoscopeId') horoscopeId: string,

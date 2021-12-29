@@ -16,6 +16,11 @@ export class HoroscopesService {
     return horoscopes.map(mapHoroscope);
   }
 
+  async getSingleHoroscope(horoscopeId: string) {
+    const doc = await this.horoscopeModel.findById(horoscopeId);
+    return mapHoroscope(doc);
+  }
+
   async updateHoroscope(horoscopeId: string, data: HoroscopeContent) {
     const doc = await this.horoscopeModel.findById(horoscopeId);
 
