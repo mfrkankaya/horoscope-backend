@@ -28,13 +28,18 @@ export class HoroscopesService {
     const weekly = data.weekly || doc.weekly;
     const monthly = data.monthly || doc.monthly;
 
-    const result = await doc.update({
-      daily,
-      weekly,
-      monthly,
+    const horoscopeContent = { daily, weekly, monthly };
+    await doc.update({
+      ...horoscopeContent,
       editedAt: new Date().getTime(),
     });
 
-    return result;
+    return {
+      error: false,
+      data: {
+        id: horoscopeId,
+        ...horoscopeContent,
+      },
+    };
   }
 }
