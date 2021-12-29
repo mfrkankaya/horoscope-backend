@@ -34,7 +34,7 @@ export class HoroscopesService {
     const monthly = data.monthly || doc.monthly;
 
     const horoscopeContent = { daily, weekly, monthly };
-    await doc.update({
+    await doc.updateOne({
       ...horoscopeContent,
       editedAt: new Date().getTime(),
     });
