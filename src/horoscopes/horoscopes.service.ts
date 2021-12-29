@@ -43,6 +43,7 @@ export class HoroscopesService {
       error: false,
       data: {
         id: horoscopeId,
+        name: doc.name,
         ...horoscopeContent,
       },
     };
