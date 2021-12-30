@@ -29,9 +29,7 @@ export class AppModule implements NestModule {
       .exclude(
         { path: 'horoscopes', method: RequestMethod.GET },
         { path: 'horoscopes/:horoscopeId', method: RequestMethod.GET },
-        { path: 'analyzes', method: RequestMethod.GET },
         { path: 'analyzes/random', method: RequestMethod.GET },
-        { path: 'analyzes/:analysisId', method: RequestMethod.GET },
       )
       .forRoutes(HoroscopesController, AnalyzesController);
   }
