@@ -29,9 +29,9 @@ export class HoroscopesService {
         `Horoscope with id of ${horoscopeId} not found`,
       );
 
-    const daily = data.daily || doc.daily;
-    const weekly = data.weekly || doc.weekly;
-    const monthly = data.monthly || doc.monthly;
+    const daily = data.daily ?? doc.daily;
+    const weekly = data.weekly ?? doc.weekly;
+    const monthly = data.monthly ?? doc.monthly;
 
     const horoscopeContent = { daily, weekly, monthly };
     await doc.updateOne({
