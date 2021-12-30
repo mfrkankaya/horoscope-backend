@@ -40,12 +40,9 @@ export class HoroscopesService {
     });
 
     return {
-      error: false,
-      data: {
-        id: horoscopeId,
-        name: doc.name,
-        ...horoscopeContent,
-      },
+      id: horoscopeId,
+      name: doc.name,
+      ...horoscopeContent,
     };
   }
 }

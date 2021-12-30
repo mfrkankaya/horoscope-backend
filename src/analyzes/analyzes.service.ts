@@ -20,7 +20,7 @@ export class AnalyzesService {
     const random = Math.floor(Math.random() * count);
     const doc = await this.analysisModel.findOne().skip(random).exec();
 
-    return { error: false, data: doc };
+    return doc;
   }
 
   async addAnalysis(text: string) {
@@ -34,7 +34,7 @@ export class AnalyzesService {
       text,
     });
 
-    return { error: false, data: { id: doc.id, text } };
+    return { id: doc.id, text };
   }
 
   async removeAnalysis(analysisId: string) {
