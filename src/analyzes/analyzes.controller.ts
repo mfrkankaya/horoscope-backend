@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { AnalyzesService } from './analyzes.service';
 
@@ -14,8 +15,8 @@ export class AnalyzesController {
   constructor(private readonly analyzesService: AnalyzesService) {}
 
   @Get()
-  getAnalyzes() {
-    return this.analyzesService.getAnalyzes();
+  getAnalyzes(@Query('page') page: number) {
+    return this.analyzesService.getAnalyzes(page);
   }
 
   @Get('random')

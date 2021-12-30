@@ -10,8 +10,15 @@ export class AnalyzesService {
     @InjectModel('Analysis') private readonly analysisModel: Model<Analysis>,
   ) {}
 
-  async getAnalyzes() {
-    const analyzes = await this.analysisModel.find();
+  async getAnalyzes(page = 1) {
+    const seed = 10;
+    const skip = (page - 1) * seed;
+    const analyzes = await this.analysisModel
+      .find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(seed);
+
     return analyzes.map(mapAnalysis);
   }
 
