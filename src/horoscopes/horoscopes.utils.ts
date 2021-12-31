@@ -7,3 +7,8 @@ export const mapHoroscope = ({
   weekly,
   monthly,
 }: Horoscope) => ({ id, name, daily, weekly, monthly });
+
+export const mapHoroscopeWithoutContent = ({ id, name }: Horoscope) => ({
+  id,
+  name,
+});
