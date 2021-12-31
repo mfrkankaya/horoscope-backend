@@ -27,7 +27,7 @@ export class AnalyzesService {
     const random = Math.floor(Math.random() * count);
     const doc = await this.analysisModel.findOne().skip(random).exec();
 
-    return doc;
+    return mapAnalysis(doc);
   }
 
   async addAnalysis(text: string) {
